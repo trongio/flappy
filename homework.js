@@ -81,7 +81,6 @@ function component(width, height, color, x, y, type,gravity) {
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
       }
-        
     }
     this.newPos = function() {
       this.gravitySpeed += this.gravity;
@@ -94,6 +93,7 @@ function component(width, height, color, x, y, type,gravity) {
         }
       }
     }
+    
     this.hitBottom = function() {
         var rockbottom = myGameArea.canvas.height - this.height;
         if (this.y > rockbottom) {
@@ -159,6 +159,9 @@ function component(width, height, color, x, y, type,gravity) {
       myBackground.speedX = -1;
       myBackground.newPos();
       myBackground.update();
+
+    if(myObstacles[0].x<-20) myObstacles.shift();
+
     for (i = 0; i < myObstacles.length; i += 1) {
       myObstacles[i].x += -1;
       myObstacles[i].update();
