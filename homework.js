@@ -87,10 +87,19 @@ function component(width, height, color, x, y, type,gravity) {
       this.x += this.speedX;
       this.y += this.speedY + this.gravitySpeed;
       this.hitBottom();
+      this.hittop();
       if (this.type == "background") {
         if (this.x == -(this.width)) {
           this.x = 0;
         }
+      }
+    }
+
+    this.hittop = function() {
+      var alltop = 0;
+      if (this.y < alltop) {
+        this.y = alltop;
+        this.gravitySpeed = 0;
       }
     }
     
