@@ -8,6 +8,15 @@ var myGamePiece;
 var myObstacles = [];
 var myScore;
 var myBackground;
+let restartBtn = document.createElement('button');
+  restartBtn.classList.add('btn');
+  restartBtn.classList.add('btn-primary');
+  restartBtn.id = 'restart';
+  restartBtn.innerHTML = 'Restart';
+
+restartBtn.addEventListener('click', ev => {
+  location.reload();
+})
 
 function startGame() {
   myGameArea.start();
@@ -138,6 +147,9 @@ function component(width, height, color, x, y, type,gravity) {
     var x, y;
     for (i = 0; i < myObstacles.length; i += 1) {
       if (myGamePiece.crashWith(myObstacles[i])) {
+
+        document.body.append(restartBtn);
+
         myGameArea.stop();
         return;
       }
@@ -180,3 +192,4 @@ function component(width, height, color, x, y, type,gravity) {
     myGamePiece.newPos();
     myGamePiece.update();
   }
+
