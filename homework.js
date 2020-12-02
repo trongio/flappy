@@ -3,7 +3,6 @@
 // https://www.w3schools.com/graphics/game_intro.asp
 // ========================================================
 
-
 var myGamePiece;
 var myObstacles = [];
 var myScore;
@@ -39,6 +38,13 @@ var myGameArea = {
         myGameArea.key = e.keyCode;
       })
       window.addEventListener('keyup', function (e) {
+        myGameArea.key = false;
+      })
+
+      window.addEventListener('touchstart', function (e) {
+        myGameArea.key = 38;
+      })
+      window.addEventListener('touchend', function (e) {
         myGameArea.key = false;
       })
   },
