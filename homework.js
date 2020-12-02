@@ -20,7 +20,9 @@ restartBtn.addEventListener('click', ev => {
 function startGame() {
   myGameArea.start();
   myBackground = new component(656, 270, "background.png", 0, 0, "background",0);
-  myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+  if(window.innerWidth>480)
+    myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+  else myScore = new component("30px", "Consolas", "black", window.innerWidth-200, 40, "text");
   myGamePiece = new component(30, 30, "birddown.png", 50, 100,"image",-0.05);
   myObstacle = new component(10, 200, "green", 300, 120);
 }
@@ -28,7 +30,9 @@ function startGame() {
 var myGameArea = {
   canvas : document.createElement("canvas"),
   start : function() {
+    if(window.innerWidth>480)
     this.canvas.width = 480;
+    else this.canvas.width = window.innerWidth;
     this.canvas.height = 270;
     this.context = this.canvas.getContext("2d");
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
